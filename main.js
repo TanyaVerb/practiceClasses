@@ -60,7 +60,7 @@ class User {
 class Member extends User {
   constructor(name, id) {
     super(name, id);
-    this.borrowedBooks = [];
+    this.borrowedBooks = []; //список взятых книг
   }
   borrowBook(book) {
     if (book.available) {
@@ -160,6 +160,7 @@ class Library {
 const library = new Library("City Library");
 const librarian = new Librarian("John", "lib001", library);
 const member = new Member("Alice", "mem001");
+const member2 = new Member("Ali", "mem002");
 
 const book1 = new Book("1984", "George Orwell", "1234567890");
 const book2 = new Book("Brave New World", "Aldous Huxley", "0987654321");
@@ -174,3 +175,6 @@ console.log(member.returnBook(book1)); // Alice returned "1984".
 console.log(library.findBookByISBN("0987654321")); //Book {title: 'Brave New World', author: 'Aldous Huxley', isbn: '0987654321', available: true}
 
 console.log(library.findBookByTitle("Brave New World")); //Book {title: 'Brave New World', author: 'Aldous Huxley', isbn: '0987654321', available: true}
+
+console.log(member.borrowBook(book2));
+console.log(member2.borrowBook(book2));
